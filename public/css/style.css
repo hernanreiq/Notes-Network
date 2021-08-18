@@ -8,3 +8,7 @@ body {
 nav {
     text-shadow: 1px 1px 1px black;
 }
+textarea {
+    resize: none;
+    min-height: 150px;
+}

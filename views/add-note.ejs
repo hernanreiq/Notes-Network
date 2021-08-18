@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main>
+    <div class="container p-4 mt-3">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Create a new note</h1>
+                </div>
+                <div class="card-body">
+                    <form action="/note/add" method="POST" autocomplete="off">
+                        <div class="form-group">
+                            <input type="text" name="title" class="form-control" placeholder="Title" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="description" class="form-control" placeholder="Description"></textarea>
+                        </div>
+                        <button type="reset" class="btn btn-secondary my-1 w-100">Clean fields</button>
+                        <button type="submit" class="btn btn-success my-1 w-100">Create this note</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<%- include('partials/footer') %>
