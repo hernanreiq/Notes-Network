@@ -1,6 +1,6 @@
 const index_controller = {
-    home: function(req, res){
-        if(res.status(200)){
+    home: function (req, res) {
+        if (res.status(200)) {
             res.render('index');
         }
     }
