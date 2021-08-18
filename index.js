@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost:27017/notes_network')
     console.log('Database ready!');
     //server
     app.listen(PORT, () => {
-        console.log('Server ready, port: ', PORT);
+        console.log('Server ready, port:', PORT);
     });
 })
 .catch(err => {
