@@ -3,6 +3,12 @@ const notes_controller = {
         if (res.status(200)) {
             res.render('add-note');
         }
+    },
+    new_note: function(req, res){
+        if(res.status(200)){
+            console.log(req.body);
+            res.send({message: "Nota creada con éxito!"});
+        }
     }
 };
 

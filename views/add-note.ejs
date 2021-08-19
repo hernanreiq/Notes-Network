@@ -10,10 +10,19 @@
                 <div class="card-body">
                     <form action="/note/add" method="POST" autocomplete="off">
                         <div class="form-group">
-                            <input type="text" name="title" class="form-control" placeholder="Title" autofocus>
+                            <input type="text" name="title" class="form-control" required placeholder="Title" autofocus>
                         </div>
                         <div class="form-group">
-                            <textarea name="description" class="form-control" placeholder="Description"></textarea>
+                            <textarea name="description" class="form-control" required placeholder="Description"></textarea>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text" for="Visibility">Visibility</label>
+                            </div>
+                            <select class="custom-select" name="Visibility" id="Visibility">
+                              <option value="Private">Private</option>
+                              <option value="Public">Public</option>
+                            </select>
                         </div>
                         <button type="reset" class="btn btn-secondary my-1 w-100">Clean fields</button>
                         <button type="submit" class="btn btn-success my-1 w-100">Create this note</button>
