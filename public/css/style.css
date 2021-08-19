@@ -13,14 +13,42 @@ textarea {
     min-height: 150px;
 }
 .card-body {
-    background: #f46b45;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #eea849, #f46b45);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #eea849, #f46b45); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #f46b45;  
+    background: -webkit-linear-gradient(to left, #eea849, #f46b45); 
+    background: linear-gradient(to left, #eea849, #f46b45); 
 }
 .card-header, .card-footer {
     color: white;
     text-shadow: 1px 1px 1px black;
-    background: #f46b45;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #eea849, #f46b45);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #eea849, #f46b45); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #f46b45;  
+    background: -webkit-linear-gradient(to right, #eea849, #f46b45); 
+    background: linear-gradient(to right, #eea849, #f46b45); 
+}
+.btn {
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+}
+.btn:hover {
+    color: white;
+}
+.btn-send {
+    background: #000000;  
+    background: -webkit-linear-gradient(to bottom, #0c5c0c, #000000); 
+    background: linear-gradient(to bottom, #0c5c0c, #000000); 
+}
+.btn-send:hover {
+    background: #000000;  
+    background: -webkit-linear-gradient(to bottom, #0f9b0f, #000000); 
+    background: linear-gradient(to bottom, #0f9b0f, #000000); 
+}
+.btn-clean {
+    background: #1e2529;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #414345, #1e2529);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #414345, #1e2529); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.btn-clean:hover {
+    background: #0e1113;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2e3031, #0e1113);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2e3031, #0e1113); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
