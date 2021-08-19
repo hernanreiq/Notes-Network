@@ -5,7 +5,7 @@ const notesModel = Schema({
     title: {type: String},
     description: {type: String},
     visibility: {type: Boolean},
-    create_at: {type: Date},
+    created_at: {type: Date},
     user_id: {type: String}
 });
 
