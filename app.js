@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const method_override = require('method-override');
 const express_session = require('express-session');
+const {format} = require('timeago.js');
 
 //initializations
 const app = express();
@@ -28,6 +29,10 @@ app.use(express_session({
 }));
 
 //global variables
+app.use((req, res, next) => {
+    app.locals.format = format;
+    next(); 
+});
 
 // routes
 app.use('/', routes_index);

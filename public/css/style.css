@@ -1,8 +1,8 @@
 body {
     height: 1000px;
-    background: #232526;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #0c4680, #232526);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #0c4680, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #232526;  
+    background: -webkit-linear-gradient(to bottom, #0c4680, #232526); 
+    background: linear-gradient(to bottom, #0c4680, #232526); 
     
 }
 nav {
@@ -12,12 +12,15 @@ textarea {
     resize: none;
     min-height: 150px;
 }
-.card-body {
+.card-title, .h1-main {
+    text-shadow: 1px 1px 1px black;
+}
+.card-body-form {
     background: #f46b45;  
     background: -webkit-linear-gradient(to left, #eea849, #f46b45); 
     background: linear-gradient(to left, #eea849, #f46b45); 
 }
-.card-header, .card-footer {
+.card-header-form, .card-footer-form {
     color: white;
     text-shadow: 1px 1px 1px black;
     background: #f46b45;  
@@ -43,12 +46,29 @@ textarea {
     background: linear-gradient(to bottom, #0f9b0f, #000000); 
 }
 .btn-clean {
-    background: #1e2529;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #414345, #1e2529);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #414345, #1e2529); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #1e2529;  
+    background: -webkit-linear-gradient(to bottom, #414345, #1e2529); 
+    background: linear-gradient(to bottom, #414345, #1e2529); 
 }
 .btn-clean:hover {
-    background: #0e1113;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #2e3031, #0e1113);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #2e3031, #0e1113); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #0e1113;  
+    background: -webkit-linear-gradient(to bottom, #2e3031, #0e1113); 
+    background: linear-gradient(to bottom, #2e3031, #0e1113); 
+}
+.card-footer-main {
+    background: #000000; 
+    background: -webkit-linear-gradient(to left, #434343, #000000);  
+    background: linear-gradient(to left, #434343, #000000); 
+}
+.card-header-main {
+    background: #000000; 
+    background: -webkit-linear-gradient(to right, #434343, #000000);  
+    background: linear-gradient(to right, #434343, #000000); 
+}
+.card-body-main {
+    background: #be4a29;  
+    background: -webkit-linear-gradient(to left, #f46b45, #be4a29, #be4a29); 
+    background: linear-gradient(to left, #f46b45, #be4a29, #be4a29); 
+    color: white;
+    text-shadow: 1px 1px 1px black;
 }

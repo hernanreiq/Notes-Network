@@ -4,10 +4,10 @@
             <div class="container p-4 mt-3">
                 <div class="col-md-6 offset-md-3">
                     <div class="card shadow">
-                        <div class="card-header">
-                            <h1 class="text-center">Create a new note</h1>
+                        <div class="card-header card-header-form">
+                            <h2 class="text-center">Create a new note</h2>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body card-body-form">
                             <form action="/note/add" method="POST" autocomplete="off" id="note-add">
                                 <div class="form-group">
                                     <input type="text" name="title" class="shadow form-control" required placeholder="Title"
@@ -28,7 +28,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer card-footer-form">
                             <button type="reset" class="btn btn-clean my-1 w-100 shadow" form="note-add">Clean fields</button>
                             <button type="submit" class="btn btn-send my-1 w-100 shadow" form="note-add">Create this note</button>
                         </div>

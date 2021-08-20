@@ -1,4 +1,25 @@
 <%- include('partials/head') %>
 <%- include('partials/header') %>
-
+<main>
+    <div class="container">
+        <h1 class="my-5 text-center text-light h1-main">These are all the public notes of our network</h1>
+        <div class="row row-cols-1 row-cols-md-3">
+            <% notes.forEach(function(notes){ %>
+            <div class="col mb-4">
+              <div class="card shadow h-100">
+                    <div class="card-header card-header-main">
+                        <h4 class="card-title text-light mb-0"><%= notes.title%></h4>
+                    </div>
+                    <div class="card-body card-body-main">
+                        <p class="card-text text-justify"><%= notes.description%></p>
+                    </div>
+                    <div class="card-footer card-footer-main">
+                        <p class="card-text text-warning"><%= format(notes.created_at)%></p>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</main>
 <%- include('partials/footer') %>
