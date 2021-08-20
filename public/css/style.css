@@ -1,9 +1,8 @@
 body {
-    height: 1000px;
+    min-height: 1000px;
     background: #232526;  
     background: -webkit-linear-gradient(to bottom, #0c4680, #232526); 
     background: linear-gradient(to bottom, #0c4680, #232526); 
-    
 }
 nav {
     text-shadow: 1px 1px 1px black;
@@ -11,6 +10,18 @@ nav {
 textarea {
     resize: none;
     min-height: 150px;
+}
+.btn-profile {
+    background-color: #0c4680;
+}
+.btn-profile:hover {
+    background-color: #035db6;
+}
+.btn-edit {
+    background-color: #009ac9;
+}
+.btn-edit:hover {
+    background-color: #0081a8;
 }
 .card-title, .h1-main {
     text-shadow: 1px 1px 1px black;
