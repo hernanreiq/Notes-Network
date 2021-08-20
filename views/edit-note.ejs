@@ -8,7 +8,7 @@
                     <h2 class="text-center">Edit this note</h2>
                 </div>
                 <div class="card-body card-body-form">
-                    <form action="/note/edit/<%= note._id %>" method="POST" autocomplete="off" id="note-add">
+                    <form action="/note/edit/<%= note._id %>" method="POST" autocomplete="off" id="note-update">
                         <div class="form-group">
                             <input type="text" name="title" class="shadow form-control" required placeholder="Title" autofocus value="<%= note.title %>"> 
                         </div>
@@ -20,15 +20,20 @@
                                 <label class="input-group-text font-weight-bold bg-dark text-light" for="Visibility">Visibility</label>
                             </div>
                             <select class="custom-select shadow" name="visibility" id="Visibility">
-                                <option value="Private">Private</option>
-                                <option value="Public">Public</option>
+                                <% if(note.visibility){ %>
+                                    <option value="Private">Private</option>
+                                    <option value="Public" selected>Public</option>
+                                <% } else {%>
+                                    <option value="Private" selected>Private</option>
+                                    <option value="Public">Public</option>
+                                <% } %>
                             </select>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer card-footer-form">
-                    <button type="reset" class="btn btn-clean my-1 w-100 shadow" form="note-add">Clean fields</button>
-                    <button type="submit" class="btn btn-send my-1 w-100 shadow" form="note-add">Update this note</button>
+                    <a href="/user/profile/<%= note.user_id %>" class="btn btn-profile d-block my-1">Back to profile</a>
+                    <button type="submit" class="btn btn-send my-1 w-100 shadow" form="note-update">Update this note</button>
                 </div>
             </div>
         </div>

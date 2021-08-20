@@ -13,9 +13,13 @@ textarea {
 }
 .btn-profile {
     background-color: #0c4680;
+    background: -webkit-linear-gradient(to bottom, #0c4680, #232526); 
+    background: linear-gradient(to bottom, #0c4680, #232526); 
 }
 .btn-profile:hover {
     background-color: #035db6;
+    background: -webkit-linear-gradient(to bottom, #035db6, #232526); 
+    background: linear-gradient(to bottom, #035db6, #232526); 
 }
 .btn-edit {
     background-color: #009ac9;
