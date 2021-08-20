@@ -5,17 +5,15 @@
         <div class="col-md-6 offset-md-3">
             <div class="card shadow">
                 <div class="card-header card-header-form">
-                    <h2 class="text-center">Create a new note</h2>
+                    <h2 class="text-center">Edit this note</h2>
                 </div>
                 <div class="card-body card-body-form">
-                    <form action="/note/add" method="POST" autocomplete="off" id="note-add">
+                    <form action="/note/edit/<%= note._id %>" method="POST" autocomplete="off" id="note-add">
                         <div class="form-group">
-                            <input type="text" name="title" class="shadow form-control" required placeholder="Title"
-                                autofocus>
+                            <input type="text" name="title" class="shadow form-control" required placeholder="Title" autofocus value="<%= note.title %>"> 
                         </div>
                         <div class="form-group">
-                            <textarea name="description" class="shadow form-control" required
-                                placeholder="Description"></textarea>
+                            <textarea name="description" class="shadow form-control" required placeholder="Description"><%= note.description %></textarea>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -30,7 +28,7 @@
                 </div>
                 <div class="card-footer card-footer-form">
                     <button type="reset" class="btn btn-clean my-1 w-100 shadow" form="note-add">Clean fields</button>
-                    <button type="submit" class="btn btn-send my-1 w-100 shadow" form="note-add">Create this note</button>
+                    <button type="submit" class="btn btn-send my-1 w-100 shadow" form="note-add">Update this note</button>
                 </div>
             </div>
         </div>

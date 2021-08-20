@@ -19,6 +19,28 @@ const notes_controller = {
         } else {
             res.redirect('/note/add');
         }
+    }, 
+    edit: async function(req, res){
+        if(res.status(200)){
+            const note = await notes_model.findById(req.params.id);
+            res.render('edit-note', {note});
+        }
+    },
+    update_note: async function(req, res){
+        if(res.status(200)){
+            const note = await notes_model.findByIdAndUpdate(req.params.id, {
+                title: req.body.title,
+                description: req.body.description,
+                visibility: req.body.visibility == 'Public' ? true : false,
+                created_at: Date.now()
+            }, {new:true}, (err, noteUpdated) => {
+                if(noteUpdated){
+                    res.redirect('/');
+                } else {
+                    res.redirect('/note/edit/', req.params.id);
+                }
+            })
+        }
     }
 };
 
