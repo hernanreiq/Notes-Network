@@ -8,7 +8,8 @@
                     <h2 class="text-center">Edit this note</h2>
                 </div>
                 <div class="card-body card-body-form">
-                    <form action="/note/edit/<%= note._id %>" method="POST" autocomplete="off" id="note-update">
+                    <form action="/note/edit/<%= note._id %>?_method=PUT" method="POST" autocomplete="off" id="note-update">
+                        <input type="hidden" name="_method" value="PUT">
                         <div class="form-group">
                             <input type="text" name="title" class="shadow form-control" required placeholder="Title" autofocus value="<%= note.title %>"> 
                         </div>
