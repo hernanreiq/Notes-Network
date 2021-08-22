@@ -3,6 +3,7 @@
 <main>
     <div class="container">
         <h1 class="my-5 text-center text-light h1-main">These are all the public notes of our network</h1>
+        <%- include('partials/messages') %>
         <div class="row row-cols-1 row-cols-md-3">
             <% notes.forEach(function(notes){ %>
             <div class="col mb-4">

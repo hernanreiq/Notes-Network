@@ -15,6 +15,7 @@ const notes_controller = {
             note.created_at = Date.now();
             note.user_id = 'Todavía no';
             await note.save();
+            req.flash('success_msg', 'Note created successfully!');
             res.redirect('/');
         } else {
             res.redirect('/note/add');
@@ -35,6 +36,7 @@ const notes_controller = {
                 created_at: Date.now()
             }, {new:true}, (err, noteUpdated) => {
                 if(noteUpdated){
+                    req.flash('success_msg', 'Note updated successfully!');
                     res.redirect('/');
                 } else {
                     res.redirect('/note/edit/', req.params.id);
@@ -46,6 +48,7 @@ const notes_controller = {
         if(res.status(200)){
             await notes_model.findByIdAndDelete(req.params.id, (err, noteDeleted) => {
                 if(noteDeleted){
+                    req.flash('success_msg', 'Note deleted successfully!');
                     res.redirect('/');
                 } else {
                     res.redirect('/');

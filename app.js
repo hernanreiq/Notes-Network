@@ -3,6 +3,7 @@ const path = require('path');
 const method_override = require('method-override');
 const express_session = require('express-session');
 const {format} = require('timeago.js');
+const flash = require('connect-flash');
 
 //initializations
 const app = express();
@@ -27,11 +28,17 @@ app.use(express_session({
     resave: true,
     saveUninitialized: true
 }));
+app.use(flash());
 
 //global variables
 app.use((req, res, next) => {
     app.locals.format = format;
     next(); 
+});
+app.use((req, res, next)=> {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
 });
 
 // routes
