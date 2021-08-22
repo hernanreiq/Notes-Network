@@ -6,5 +6,6 @@ router.get('/note/add', notes_controller.add);
 router.post('/note/add', notes_controller.new_note);
 router.get('/note/edit/:id', notes_controller.edit);
 router.put('/note/edit/:id', notes_controller.update_note);
+router.delete('/note/delete/:id', notes_controller.delete_note);
 
 module.exports = router;

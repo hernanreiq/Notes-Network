@@ -9,4 +9,4 @@ const notesModel = Schema({
     user_id: {type: String}
 });
 
-module.exports = mongoose.model('notesModel', notesModel);
+module.exports = mongoose.model('note', notesModel);

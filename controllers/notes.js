@@ -41,6 +41,17 @@ const notes_controller = {
                 }
             })
         }
+    },
+    delete_note: async function(req, res){
+        if(res.status(200)){
+            await notes_model.findByIdAndDelete(req.params.id, (err, noteDeleted) => {
+                if(noteDeleted){
+                    res.redirect('/');
+                } else {
+                    res.redirect('/');
+                }
+            });
+        }
     }
 };
 
