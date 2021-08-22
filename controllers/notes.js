@@ -9,9 +9,10 @@ const notes_controller = {
     new_note: async function(req, res){
         if(res.status(200) && (req.body.title != '') && (req.body.description != '') && (req.body.visibility != '')){
             const note = new notes_model();
-            note.title = req.body.title;
-            note.description = req.body.description;
-            note.visibility = req.body.visibility == 'Public' ? true : false;
+            const {title, description, visibility} = req.body;
+            note.title = title;
+            note.description = description;
+            note.visibility = visibility == 'Public' ? true : false;
             note.created_at = Date.now();
             note.user_id = 'Todavía no';
             await note.save();
@@ -29,10 +30,11 @@ const notes_controller = {
     },
     update_note: async function(req, res){
         if(res.status(200)){
+            const {title, description, visibility} = req.body;
             const note = await notes_model.findByIdAndUpdate(req.params.id, {
-                title: req.body.title,
-                description: req.body.description,
-                visibility: req.body.visibility == 'Public' ? true : false,
+                title: title,
+                description: description,
+                visibility: visibility == 'Public' ? true : false,
                 created_at: Date.now()
             }, {new:true}, (err, noteUpdated) => {
                 if(noteUpdated){
