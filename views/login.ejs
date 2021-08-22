@@ -1,0 +1,32 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main>
+    <div class="container p-4 mt-3">
+        <%- include('partials/error') %>    
+        <%- include('partials/success') %>    
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header card-header-form">
+                        <h2 class="text-center">Login</h2>
+                    </div>
+                    <div class="card-body card-body-main">
+                        <form action="/user/login" method="POST" id="user-login" autocomplete="off">
+                            <div class="form-group">
+                                <input type="email" name="email" required placeholder="Email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" required class="form-control" placeholder="Password">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer card-footer-form">
+                        <button type="reset" class="btn btn-clean my-1 w-100 shadow" form="user-login">Clean fields</button>
+                        <button type="submit" class="btn btn-send my-1 w-100 shadow" form="user-login">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<%- include('partials/footer') %>
