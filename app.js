@@ -4,9 +4,11 @@ const method_override = require('method-override');
 const express_session = require('express-session');
 const {format} = require('timeago.js');
 const flash = require('connect-flash');
+const passport = require('passport');
 
 //initializations
 const app = express();
+require('./config/passport');
 
 //routes file
 const routes_index = require('./routes/index');
@@ -28,6 +30,8 @@ app.use(express_session({
     resave: true,
     saveUninitialized: true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 //global variables
@@ -38,6 +42,7 @@ app.use((req, res, next) => {
 app.use((req, res, next)=> {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
     next();
 });
 

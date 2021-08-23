@@ -44,9 +44,6 @@ const user_controller = {
     },
     login: function(req, res){
         res.render('login');
-    },
-    logined_user: async function(req, res){
-        
     }
 };
 
