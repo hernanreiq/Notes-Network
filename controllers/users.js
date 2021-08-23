@@ -28,10 +28,9 @@ const user_controller = {
             req.flash('error_msg', 'Passwords are different.');
             res.redirect('/user/register');
         } else {
-            const newUser = new User();
-            newUser.name = name;
-            newUser.email = email;
-            newUser.password = password;
+            const newUser = new User({name, email});
+            newUser.password = await newUser.encryptPassword(password);
+            newUser.created_at = Date.now();
             await newUser.save((err, userRegistered) => {
                 if(userRegistered){
                     req.flash('success_msg', 'User registered successfully!');
