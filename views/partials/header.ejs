@@ -7,11 +7,29 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
               <ul class="navbar-nav ml-auto">
+              <% if(user){ %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Notes
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/user/notes/<%= user._id %>">My notes</a>
+                    <a class="dropdown-item" href="/note/add">Add a new note</a>
+                    <a class="dropdown-item" href="/user/profile/<%= user._id %>">My profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/user/logout">Logout</a>
+                  </div>
+                </li>
+              <% } else { %>
+                <li class="nav-item">
+                  <a class="nav-link text-light" href="/user/register">Register</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link text-light" href="/user/login">Login</a>
                 </li>
+              <% } %>
                 <li class="nav-item">
-                  <a class="nav-link text-light" href="/user/register">Register</a>
+                  <a href="/about" class="nav-link text-light">About</a>
                 </li>
               </ul>
             </div>

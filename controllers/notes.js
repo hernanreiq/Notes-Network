@@ -12,7 +12,7 @@ const notes_controller = {
             note.description = description;
             note.visibility = visibility == 'Public' ? true : false;
             note.created_at = Date.now();
-            note.user_id = 'Todavía no';
+            note.user_id = req.user._id;
             await note.save();
             req.flash('success_msg', 'Note created successfully!');
             res.redirect('/');

@@ -2,9 +2,12 @@ const Note = require('../models/notes');
 const User = require('../models/users');
 
 const user_controller = {
-    profile: async function (req, res){
+    profile: async function(req, res){
+        res.send({message: "Hola " + req.user.name});
+    },
+    my_notes: async function (req, res){
         const notes = await Note.find({user_id: req.params.id}).sort({_id: -1});
-        res.render('profile', {notes});
+        res.render('my_notes', {notes});
     },
     register: async function (req, res){
         res.render('register');
@@ -44,6 +47,14 @@ const user_controller = {
     },
     login: function(req, res){
         res.render('login');
+    },
+    logined: function(req, res){
+        res.redirect('/user/notes/' + req.user._id);
+    },
+    logout: function(req, res){
+        req.logout();
+        req.flash('success_msg', 'Session closed successfully!');
+        res.redirect('/');
     }
 };
 

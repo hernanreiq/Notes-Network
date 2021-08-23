@@ -1,10 +1,9 @@
 body {
-    min-height: 1000px;
     background: #232526;  
-    background: -webkit-linear-gradient(to bottom, #0c4680, #232526); 
-    background: linear-gradient(to bottom, #0c4680, #232526); 
+    background: -webkit-linear-gradient(to right, #0c4680, #232526); 
+    background: linear-gradient(to right, #0c4680, #232526); 
 }
-nav {
+nav .nav-link, .nav-brand{
     text-shadow: 1px 1px 1px black;
 }
 textarea {
