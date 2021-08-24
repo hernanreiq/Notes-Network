@@ -13,7 +13,7 @@ router.post('/user/login', passport.authenticate('local', {failureRedirect: '/us
 //perfil
 router.get('/user/profile/:id', isAuthenticated, user_controller.profile);
 router.get('/user/notes/:id', isAuthenticated, user_controller.my_notes);
-
+router.get('/user/changes/:id', isAuthenticated, user_controller.changes);
 //cerrar sesion
 router.get('/user/logout', isAuthenticated, user_controller.logout);
 

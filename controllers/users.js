@@ -55,6 +55,14 @@ const user_controller = {
         req.logout();
         req.flash('success_msg', 'Session closed successfully!');
         res.redirect('/');
+    },
+    changes: function(req, res){
+        if(req.user._id == req.params.id){
+            res.render('changes-data');
+        } else {
+            req.flash('error_msg', 'You cannot edit someone else\'s profile');
+            res.redirect('/user/profile/' + req.user._id);
+        }
     }
 };
 
