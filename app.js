@@ -35,11 +35,8 @@ app.use(passport.session());
 app.use(flash());
 
 //global variables
-app.use((req, res, next) => {
-    app.locals.format = format;
-    next(); 
-});
 app.use((req, res, next)=> {
+    app.locals.format = format;
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');

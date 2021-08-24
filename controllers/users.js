@@ -3,11 +3,11 @@ const User = require('../models/users');
 
 const user_controller = {
     profile: async function(req, res){
-        res.send({message: "Hola " + req.user.name});
+        res.render('profile');
     },
     my_notes: async function (req, res){
         const notes = await Note.find({user_id: req.params.id}).sort({_id: -1});
-        res.render('my_notes', {notes});
+        res.render('notes', {notes});
     },
     register: async function (req, res){
         res.render('register');
