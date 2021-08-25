@@ -15,7 +15,7 @@
                             <button class="btn btn-send w-100 mt-0 mb-2" type="submit" form="user-name-update">CHANGE MY NAME</button>
                         </div>
                     </form>
-                    <form action="/user/update/<%= user._id %>?_method=PUT" method="POST" autocomplete="off" id="user-email-update">
+                    <form action="/user/change/email/<%= user._id %>?_method=PUT" method="POST" autocomplete="off" id="user-email-update">
                         <input type="hidden" name="_method" value="PUT">
                         <div class="form-group">
                             <input type="email" name="email" class="my-2 shadow form-control" required placeholder="Email" value="<%= user.email %>"> 

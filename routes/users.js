@@ -16,6 +16,7 @@ router.get('/user/notes/:id', isAuthenticated, user_controller.my_notes);
 //cambiar datos del perfil
 router.get('/user/changes/:id', isAuthenticated, user_controller.changes);
 router.put('/user/change/name/:id', isAuthenticated, user_controller.change_name);
+router.put('/user/change/email/:id', isAuthenticated, user_controller.change_email);
 //cerrar sesion
 router.get('/user/logout', isAuthenticated, user_controller.logout);
 

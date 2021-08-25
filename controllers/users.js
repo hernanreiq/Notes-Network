@@ -82,6 +82,31 @@ const user_controller = {
             req.flash('error_msg', 'You cannot edit someone else\'s profile');
         }
         return res.redirect('/user/profile/' + req.user._id);
+    },
+    change_email: async function(req, res){
+        if(req.user._id == req.params.id){
+            const {email} = req.body;
+            if(email.length > 0){
+                await User.find({email: email}, async function (err, userData){
+                    if(userData.length > 0){
+                        req.flash('error_msg', 'This email is already in use');
+                    } else {
+                        await User.findByIdAndUpdate(req.user._id,{email: email}, {new: true}, (err, userUpdated) => {
+                            if(!userUpdated){
+                                req.flash('error_msg', 'Your email could not be updated');
+                            } else if(res.status(200)){
+                                req.flash('success_msg', 'Your email was successfully updated!');
+                            }
+                        });
+                    }
+                });
+            } else {
+                req.flash('error_msg', 'Your email could not be updated');
+            }
+        } else {
+            req.flash('error_msg', 'You cannot edit someone else\'s profile');
+        }
+        return res.redirect('/user/profile/' + req.user._id);
     }
 };
 
