@@ -8,7 +8,7 @@
                     <h2 class="text-center">Update my profile</h2>
                 </div>
                 <div class="card-body card-body-form">
-                    <form action="/user/update/<%= user._id %>?_method=PUT" method="POST" autocomplete="off" id="user-name-update">
+                    <form action="/user/change/name/<%= user._id %>?_method=PUT" method="POST" autocomplete="off" id="user-name-update">
                         <input type="hidden" name="_method" value="PUT">
                         <div class="form-group">
                             <input type="text" name="name" class="my-2 shadow form-control" required placeholder="Name" autofocus value="<%= user.name %>"> 

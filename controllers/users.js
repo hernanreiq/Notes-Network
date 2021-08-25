@@ -63,6 +63,25 @@ const user_controller = {
             req.flash('error_msg', 'You cannot edit someone else\'s profile');
             res.redirect('/user/profile/' + req.user._id);
         }
+    },
+    change_name: async function(req, res){
+        if(req.user._id == req.params.id){
+            const {name} = req.body;
+            if(name.length > 0){
+                await User.findByIdAndUpdate(req.user._id,{name: name}, {new: true}, (err, userUpdated) => {
+                    if(!userUpdated){
+                        req.flash('error_msg', 'Your name could not be updated');
+                    } else if(res.status(200)){
+                        req.flash('success_msg', 'Your name was successfully updated!');
+                    }
+                });
+            } else {
+                req.flash('error_msg', 'Your name could not be updated');
+            }
+        } else {
+            req.flash('error_msg', 'You cannot edit someone else\'s profile');
+        }
+        return res.redirect('/user/profile/' + req.user._id);
     }
 };
 
