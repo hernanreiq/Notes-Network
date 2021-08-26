@@ -52,14 +52,19 @@ const notes_controller = {
         }
     },
     delete_note: async function(req, res){
-        await notes_model.findByIdAndDelete(req.params.id, (err, noteDeleted) => {
-            if(noteDeleted){
-                req.flash('success_msg', 'Note deleted successfully!');
-                res.redirect('/');
-            } else {
-                res.redirect('/');
-            }
-        });
+        const note = await notes_model.findById(req.params.id);
+        if(req.user._id == note.user_id){
+            await notes_model.findByIdAndDelete(req.params.id, (err, noteDeleted) => {
+                if(noteDeleted){
+                    req.flash('success_msg', 'Note deleted successfully!');
+                } else {
+                    req.flash('error_msg', 'The note could not be deleted');
+                }
+            });
+        } else {
+            req.flash('error_msg', 'You cannot delete another user\'s note');
+        }
+        res.redirect('/user/notes/' + req.user._id);
     }
 };
 
