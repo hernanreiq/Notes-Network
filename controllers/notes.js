@@ -15,7 +15,7 @@ const notes_controller = {
             note.user_id = req.user._id;
             await note.save();
             req.flash('success_msg', 'Note created successfully!');
-            res.redirect('/');
+            res.redirect('/user/notes/' + req.user._id);
         } else {
             res.redirect('/note/add');
         }
