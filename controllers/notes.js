@@ -36,8 +36,7 @@ const notes_controller = {
             await notes_model.findByIdAndUpdate(req.params.id, {
                 title: title,
                 description: description,
-                visibility: visibility == 'Public' ? true : false,
-                created_at: Date.now()
+                visibility: visibility == 'Public' ? true : false
             }, {new:true}, (err, noteUpdated) => {
                 if(noteUpdated){
                     req.flash('success_msg', 'Note updated successfully!');
@@ -63,6 +62,21 @@ const notes_controller = {
             });
         } else {
             req.flash('error_msg', 'You cannot delete another user\'s note');
+        }
+        res.redirect('/user/notes/' + req.user._id);
+    },
+    change_visibility: async function(req, res){
+        const note = await notes_model.findById(req.params.id);
+        if(req.user._id == note.user_id){
+            await notes_model.findByIdAndUpdate(req.params.id, {visibility: !note.visibility}, {new:true}, (err, noteUpdated) => {
+                if(noteUpdated){
+                    req.flash('success_msg', 'Note visibility successfully updated!');
+                } else {
+                    req.flash('error_msg', 'There was an error updating the visibility of the note');
+                }
+            });
+        } else {
+            req.flash('error_msg', 'You cannot edit another user\'s note');
         }
         res.redirect('/user/notes/' + req.user._id);
     }

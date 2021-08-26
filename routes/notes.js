@@ -8,5 +8,6 @@ router.post('/note/add', isAuthenticated, notes_controller.new_note);
 router.get('/note/edit/:id', isAuthenticated, notes_controller.edit);
 router.put('/note/edit/:id', isAuthenticated, notes_controller.update_note);
 router.delete('/note/delete/:id', isAuthenticated, notes_controller.delete_note);
+router.get('/note/change/visibility/:id', isAuthenticated, notes_controller.change_visibility);
 
 module.exports = router;
