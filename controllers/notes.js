@@ -25,7 +25,7 @@ const notes_controller = {
         if(req.user._id == note.user_id){
             res.render('edit-note', {note});
         } else {
-            req.flash('error_msg', 'You cannot edit another user\'s notes');
+            req.flash('error_msg', 'You cannot edit another user\'s notes.');
             res.redirect('/user/notes/' + req.user._id);
         }
     },
@@ -46,7 +46,7 @@ const notes_controller = {
                 }
             });
         } else {
-            req.flash('error_msg', 'You cannot edit another user\'s notes');
+            req.flash('error_msg', 'You cannot edit another user\'s notes.');
             res.redirect('/user/notes/' + req.user._id);
         }
     },
@@ -57,11 +57,11 @@ const notes_controller = {
                 if(noteDeleted){
                     req.flash('success_msg', 'Note deleted successfully!');
                 } else {
-                    req.flash('error_msg', 'The note could not be deleted');
+                    req.flash('error_msg', 'The note could not be deleted.');
                 }
             });
         } else {
-            req.flash('error_msg', 'You cannot delete another user\'s note');
+            req.flash('error_msg', 'You cannot delete another user\'s note.');
         }
         res.redirect('/user/notes/' + req.user._id);
     },
@@ -72,11 +72,11 @@ const notes_controller = {
                 if(noteUpdated){
                     req.flash('success_msg', 'Note visibility successfully updated!');
                 } else {
-                    req.flash('error_msg', 'There was an error updating the visibility of the note');
+                    req.flash('error_msg', 'There was an error updating the visibility of the note.');
                 }
             });
         } else {
-            req.flash('error_msg', 'You cannot edit another user\'s note');
+            req.flash('error_msg', 'You cannot edit another user\'s note.');
         }
         res.redirect('/user/notes/' + req.user._id);
     }

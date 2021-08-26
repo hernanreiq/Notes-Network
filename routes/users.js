@@ -14,7 +14,7 @@ router.post('/user/login', passport.authenticate('local', {failureRedirect: '/us
 router.get('/user/profile/:id', isAuthenticated, user_controller.profile);
 router.get('/user/notes/:id', isAuthenticated, user_controller.notes);
 //cambiar datos del perfil
-router.get('/user/changes/:id', isAuthenticated, user_controller.changes);
+router.get('/user/changes/:id', isAuthenticated, user_controller.change_data);
 router.put('/user/change/name/:id', isAuthenticated, user_controller.change_name);
 router.put('/user/change/email/:id', isAuthenticated, user_controller.change_email);
 router.put('/user/change/password/:id', isAuthenticated, user_controller.change_password);

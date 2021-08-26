@@ -49,5 +49,9 @@ app.use('/', routes_index);
 app.use('/', routes_notes);
 app.use('/', routes_users);
 
+//Bloquea las rutas no definidas
+app.use((req, res)=>{
+    res.status(404).redirect('/');
+});
 
 module.exports = app;

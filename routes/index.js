@@ -7,5 +7,4 @@ router.get('/about', index_controller.about);
 router.get('/author', index_controller.author);
 router.get('/dev', index_controller.dev);
 
-
 module.exports = router;
