@@ -12,11 +12,12 @@ router.get('/user/login', user_controller.login);
 router.post('/user/login', passport.authenticate('local', {failureRedirect: '/user/login', failureFlash: true}), user_controller.logined);
 //perfil
 router.get('/user/profile/:id', isAuthenticated, user_controller.profile);
-router.get('/user/notes/:id', isAuthenticated, user_controller.my_notes);
+router.get('/user/notes/:id', isAuthenticated, user_controller.notes);
 //cambiar datos del perfil
 router.get('/user/changes/:id', isAuthenticated, user_controller.changes);
 router.put('/user/change/name/:id', isAuthenticated, user_controller.change_name);
 router.put('/user/change/email/:id', isAuthenticated, user_controller.change_email);
+router.put('/user/change/password/:id', isAuthenticated, user_controller.change_password);
 //cerrar sesion
 router.get('/user/logout', isAuthenticated, user_controller.logout);
 

@@ -2,14 +2,29 @@ const Note = require('../models/notes');
 const User = require('../models/users');
 
 const user_controller = {
-    profile: async function(req, res){
-        res.render('profile');
+    profile: function(req, res){
+        if(req.user._id == req.params.id){
+            res.render('profile');
+        } else {
+            req.flash('error_msg', 'You can\'t see someone else\'s data');
+            res.redirect('/user/profile/' + req.user._id);
+        }
     },
-    my_notes: async function (req, res){
-        const notes = await Note.find({user_id: req.params.id}).sort({_id: -1});
-        res.render('notes', {notes});
+    notes: async function (req, res){
+        if(req.user._id == req.params.id){
+            const notes = await Note.find({user_id: req.params.id}).sort({_id: -1});
+            res.render('notes', {notes, owner: true});
+        } else if(req.user._id != req.params.id){
+            const notes = await Note.find({user_id: req.params.id, visibility: true}).sort({_id: -1});
+            if(notes.length > 0){
+                res.render('notes', {notes, owner: false});
+            } else {
+                req.flash('error_msg', 'This user has no public notes');
+                res.redirect('/');
+            }
+        }
     },
-    register: async function (req, res){
+    register: function (req, res){
         res.render('register');
     },
     registered_user: async function(req, res){
@@ -92,10 +107,10 @@ const user_controller = {
                         req.flash('error_msg', 'This email is already in use');
                     } else {
                         await User.findByIdAndUpdate(req.user._id,{email: email}, {new: true}, (err, userUpdated) => {
-                            if(!userUpdated){
-                                req.flash('error_msg', 'Your email could not be updated');
-                            } else if(res.status(200)){
+                            if(userUpdated){
                                 req.flash('success_msg', 'Your email was successfully updated!');
+                            } else {
+                                req.flash('error_msg', 'Your email could not be updated');
                             }
                         });
                     }
@@ -106,7 +121,16 @@ const user_controller = {
         } else {
             req.flash('error_msg', 'You cannot edit someone else\'s profile');
         }
-        return res.redirect('/user/profile/' + req.user._id);
+        res.redirect('/user/profile/' + req.user._id);
+    },
+    change_password: async function(req, res){
+        if(req.user._id == req.params.id){
+            const {password, new_password, new_password_confirm} = req.body;
+
+        } else {
+            req.flash('error_msg', 'You cannot edit someone else\'s profile');
+        }
+        res.redirect('/user/profile/' + req.user._id);
     }
 };
 

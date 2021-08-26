@@ -1,9 +1,14 @@
 <%- include('partials/head') %>
 <%- include('partials/header') %>
 <main>
-    <div class="container">
+    <div class="container p-4 mt-3">
+        <%- include('partials/error') %>
         <% if(notes.length > 0){ %>
-            <h2 class="my-5 text-center text-light h1-main">My notes</h2>
+            <% if(owner){%>
+            <h2 class="mb-5 text-center text-light h1-main">My notes</h2>
+            <%}else{%>
+            <h2 class="mb-5 text-center text-light h1-main">You are viewing another user's content</h2>
+            <%}%>
             <div class="row row-cols-1 row-cols-md-3">
             <% notes.forEach(function(notes){ %>
             <div class="col mb-4">

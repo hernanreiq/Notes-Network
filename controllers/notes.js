@@ -22,23 +22,34 @@ const notes_controller = {
     }, 
     edit: async function(req, res){
         const note = await notes_model.findById(req.params.id);
-        res.render('edit-note', {note});
+        if(req.user._id == note.user_id){
+            res.render('edit-note', {note});
+        } else {
+            req.flash('error_msg', 'You cannot edit another user\'s notes');
+            res.redirect('/user/notes/' + req.user._id);
+        }
     },
     update_note: async function(req, res){
-        const {title, description, visibility} = req.body;
-        const note = await notes_model.findByIdAndUpdate(req.params.id, {
-            title: title,
-            description: description,
-            visibility: visibility == 'Public' ? true : false,
-            created_at: Date.now()
-        }, {new:true}, (err, noteUpdated) => {
-            if(noteUpdated){
-                req.flash('success_msg', 'Note updated successfully!');
-                res.redirect('/');
-            } else {
-                res.redirect('/note/edit/', req.params.id);
-            }
-        });
+        const note = await notes_model.findById(req.params.id);
+        if(req.user._id == note.user_id){            
+            const {title, description, visibility} = req.body;
+            await notes_model.findByIdAndUpdate(req.params.id, {
+                title: title,
+                description: description,
+                visibility: visibility == 'Public' ? true : false,
+                created_at: Date.now()
+            }, {new:true}, (err, noteUpdated) => {
+                if(noteUpdated){
+                    req.flash('success_msg', 'Note updated successfully!');
+                    res.redirect('/');
+                } else {
+                    res.redirect('/note/edit/', req.params.id);
+                }
+            });
+        } else {
+            req.flash('error_msg', 'You cannot edit another user\'s notes');
+            res.redirect('/user/notes/' + req.user._id);
+        }
     },
     delete_note: async function(req, res){
         await notes_model.findByIdAndDelete(req.params.id, (err, noteDeleted) => {
